@@ -10,6 +10,7 @@ import util.IdWorker;
  * @create: 2019-06-10 22:46
  */
 @SpringBootApplication
+@EnableEurekaClient
 public class BaseApplication {
 
     public static void main(String[] args) {
