@@ -7,7 +7,6 @@ import entity.Result;
 import entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,14 +22,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/label")
 @CrossOrigin
-@RefreshScope
+//@RefreshScope
 public class LabelController {
     @Autowired
     private LabelService labelService;
     @Autowired
     private HttpServletRequest request;
-    @Value("${ip}")
-    private String ip;
 
     @RequestMapping(method = RequestMethod.POST)
     public Result save(@RequestBody Label label){
@@ -40,18 +37,11 @@ public class LabelController {
 
     @RequestMapping(method = RequestMethod.GET)
     public Result findAll(){
-        System.out.println("ip为："+ip);
-        //获取头信息
-        String header = request.getHeader("Authorization");
-        System.out.println(header);
-
-        List<Label> list = labelService.findAll();
-        return new Result(true,StatusCode.OK,  "查询成功", list);
+        return new Result(true,StatusCode.OK,  "查询成功", labelService.findAll());
     }
 
     @RequestMapping(value = "/{labelId}", method = RequestMethod.GET)
     public Result findById(@PathVariable("labelId") String id){
-        System.out.println("222222222222222");
         Label label = labelService.findById(id);
         return new Result(true, StatusCode.OK, "查询成功", label);
     }
@@ -71,8 +61,7 @@ public class LabelController {
 
     @RequestMapping(value = "/search", method = RequestMethod.POST)
     public Result findSearch(@RequestBody Label label){
-        List<Label> list = labelService.findSearch(label);
-        return new Result(true,StatusCode.OK,  "查询成功", list);
+        return new Result(true,StatusCode.OK,  "查询成功", labelService.findSearch(label));
     }
 
     @RequestMapping(value = "/search/{page}/{size}", method = RequestMethod.POST)

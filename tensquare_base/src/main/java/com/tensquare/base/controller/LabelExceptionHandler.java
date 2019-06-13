@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
  * @program: tensquare_parent
- * @description:
+ * @description: Controller统一异常处理
  * @author: cf
  * @create: 2019-06-12 10:34
  */
