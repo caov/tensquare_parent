@@ -1,5 +1,8 @@
 package util;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -18,6 +21,7 @@ import java.net.NetworkInterface;
  * @author: cf
  * @create: 2019-06-10 22:01
  */
+@Component
 public class IdWorker {
     //时间起始标记点，作为基准，一般取系统的最近时间（一旦确定不能变动）我这里取的是2019-06-12 10:08:14
     private final static long twepoch = 1560305294000L;
