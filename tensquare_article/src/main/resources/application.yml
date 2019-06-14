@@ -13,3 +13,7 @@ spring:
     show‐sql: true
   redis:
     host: localhost
+  data:
+    mongodb:
+      host: localhost
+      database: commentdb
