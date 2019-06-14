@@ -38,18 +38,27 @@ public class ProblemController {
         return result;
     }*/
 
+    /**
+     * 最新问答列表
+     */
     @RequestMapping(value = "/newlist/{labelid}/{page}/{size}", method= RequestMethod.GET)
     public  Result newList(@PathVariable String labelid, @PathVariable int page, @PathVariable int size){
         Page<Problem> pageData = problemService.newlist(labelid, page, size);
         return new Result(true, StatusCode.OK, "查询成功", new PageResult<Problem>(pageData.getTotalElements(), pageData.getContent()));
     }
 
+    /**
+     * 最热问答列表
+     */
     @RequestMapping(value = "/hotlist/{labelid}/{page}/{size}", method= RequestMethod.GET)
     public  Result hotlist(@PathVariable String labelid, @PathVariable int page, @PathVariable int size){
         Page<Problem> pageData = problemService.hotlist(labelid, page, size);
         return new Result(true, StatusCode.OK, "查询成功", new PageResult<Problem>(pageData.getTotalElements(), pageData.getContent()));
     }
 
+    /**
+     * 等待问答列表
+     */
     @RequestMapping(value = "/waitlist/{labelid}/{page}/{size}", method= RequestMethod.GET)
     public  Result waitlist(@PathVariable String labelid, @PathVariable int page, @PathVariable int size){
         Page<Problem> pageData = problemService.waitlist(labelid, page, size);
