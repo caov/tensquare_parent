@@ -12,8 +12,6 @@
         <module>tensquare_base</module>
         <module>tensquare_eureka</module>
         <module>tensquare_common</module>
-        <module>tensquare_config</module>
-        <module>tensquare_friend</module>
     </modules>
 
     <parent>
