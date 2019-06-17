@@ -1,10 +1,12 @@
 package com.tensquare.qa.controller;
 
+import com.tensquare.qa.client.BaseClient;
 import com.tensquare.qa.pojo.Problem;
 import com.tensquare.qa.service.ProblemService;
 import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -29,14 +31,14 @@ public class ProblemController {
     @Autowired
     private HttpServletRequest request;
 
-   /* @Autowired
-    private BaseClient baseClient;*/
+   @Autowired
+    private BaseClient baseClient;
 
-    /*@RequestMapping(value = "/label/{labelId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/label/{labelId}", method = RequestMethod.GET)
     public Result findByLabelId(@PathVariable String labelId){
         Result result = baseClient.findById(labelId);
         return result;
-    }*/
+    }
 
     /**
      * 最新问答列表
@@ -84,7 +86,6 @@ public class ProblemController {
         return new Result(true,StatusCode.OK,"查询成功",problemService.findById(id));
     }
 
-
     /**
      * 分页+多条件查询
      * @param searchMap 查询条件封装
@@ -114,10 +115,11 @@ public class ProblemController {
      */
     @RequestMapping(method=RequestMethod.POST)
     public Result add(@RequestBody Problem problem  ){
-        String token = (String) request.getAttribute("claims_user");
-        if(token==null || "".equals(token)){
+        Claims claims = (Claims) request.getAttribute("claims_user");
+        if(claims==null || "".equals(claims)){
             return new Result(false, StatusCode.ACCESSERROR, "权限不足");
         }
+        problem.setUserid(claims.getId());
         problemService.add(problem);
         return new Result(true,StatusCode.OK,"增加成功");
     }

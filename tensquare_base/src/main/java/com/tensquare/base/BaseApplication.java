@@ -2,6 +2,7 @@ package com.tensquare.base;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * @program: tensquare_parent
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @create: 2019-06-10 22:46
  */
 @SpringBootApplication
+@EnableEurekaClient
 public class BaseApplication {
 
     public static void main(String[] args) {

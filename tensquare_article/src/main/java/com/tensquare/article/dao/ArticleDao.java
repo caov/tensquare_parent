@@ -8,12 +8,13 @@ import org.springframework.data.jpa.repository.Query;
 
 /**
  * @program: tensquare_parent
- * @description: 文章Dao层
+ * @description: 文章Dao层，JPA在多表查询不如Mybatis
  * @author: cf
  * @create: 2019-06-14 14:48
  */
 public interface ArticleDao extends JpaRepository<Article,String>, JpaSpecificationExecutor<Article> {
-    @Modifying
+
+    @Modifying //增删改要加这个注解
     @Query(value = "UPDATE tb_article SET state = 1 WHERE id = ?", nativeQuery = true)
     public void examine(String id);
 
