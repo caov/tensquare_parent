@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 /**
  * @program: tensquare_parent
- * @description: 招聘实体类
+ * @description: 活动实体类
  * @author: cf
  * @create: 2019-06-14 15:20
  */

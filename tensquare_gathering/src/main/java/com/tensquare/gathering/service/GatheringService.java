@@ -21,7 +21,7 @@ import java.util.Map;
 
 /**
  * @program: tensquare_parent
- * @description: 招聘Service层
+ * @description: 活动Service层
  * @author: cf
  * @create: 2019-06-14 15:19
  */

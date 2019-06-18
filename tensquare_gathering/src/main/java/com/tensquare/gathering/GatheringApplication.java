@@ -9,7 +9,7 @@ import util.IdWorker;
 
 /**
  * @program: tensquare_parent
- * @description: 招聘模块启动类
+ * @description: 活动模块启动类
  * @author: cf
  * @create: 2019-06-14 15:14
  */

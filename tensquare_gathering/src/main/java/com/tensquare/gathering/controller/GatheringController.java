@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * @program: tensquare_parent
- * @description: 招聘控制类
+ * @description: 活动控制类
  * @author: cf
  * @create: 2019-06-14 15:19
  */
