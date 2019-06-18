@@ -11,7 +11,7 @@ import javax.persistence.Table;
  * @create: 2019-06-14 10:09
  */
 @Entity
-@Table(name = "t_recruit")
+@Table(name = "tb_recruit")
 public class Recruit {
     @Id
     private String id;//ID

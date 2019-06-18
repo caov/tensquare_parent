@@ -4,7 +4,6 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -16,12 +15,12 @@ import java.util.Date;
  * @author: cf
  * @create: 2019-06-17 11:53
  */
-
+@Component
+@ConfigurationProperties("jwt.config")
 public class JwtUtil {
 
-    @Value("jwt.config,key")
     private String key ;
-    @Value("jwt.config,ttl")
+
     private long ttl ;//一个小时
 
     /**
