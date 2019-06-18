@@ -19,4 +19,8 @@ public class RecruitApplication {
         SpringApplication.run(RecruitApplication.class);
     }
 
+    @Bean
+    public IdWorker idWorker(){
+        return new IdWorker();
+    }
 }
