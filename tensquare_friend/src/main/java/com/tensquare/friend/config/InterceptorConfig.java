@@ -20,6 +20,6 @@ public class InterceptorConfig extends WebMvcConfigurationSupport {
         //注册拦截器要声明拦截器对象和要拦截的请求
         registry.addInterceptor(jwtInterceptor)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/**/login/**");
+                .excludePathPatterns("/**/friend/**");
     }
 }

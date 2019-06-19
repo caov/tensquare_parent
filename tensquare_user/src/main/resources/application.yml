@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: tensquare_user
+  redis:
+    host: localhost
+    password: 123456
+  rabbitmq:
+    host: localhost
 eureka:
   client:
     service-url:

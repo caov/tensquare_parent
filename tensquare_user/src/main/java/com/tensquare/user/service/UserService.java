@@ -2,12 +2,18 @@ package com.tensquare.user.service;
 
 import com.tensquare.user.dao.UserDao;
 import com.tensquare.user.pojo.User;
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import util.IdWorker;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @program: tensquare_parent
@@ -25,6 +31,9 @@ public class UserService {
     IdWorker idWorker;
     @Autowired
     BCryptPasswordEncoder encoder;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     public void add(User user) {
         user.setId( idWorker.nextId()+"" );
@@ -51,5 +60,25 @@ public class UserService {
 
     public void deleteById(String id) {
         userDao.deleteById(id);
+    }
+
+    @Transactional
+    public void updatefanscountandfollowcount(int x, String userid, String friendid) {
+        userDao.updatefanscount(x, friendid);
+        userDao.updatefollowcount(x, userid);
+    }
+
+    public void sendSms(String mobile) {
+        //生成六位数字随机数
+        String checkcode = RandomStringUtils.randomNumeric(6);
+        //向缓存中放一份
+        redisTemplate.opsForValue().set("checkcode_"+mobile, checkcode, 6, TimeUnit.HOURS);
+        //给用户发一份
+        Map<String, String> map = new HashMap<>();
+        map.put("mobile", mobile);
+        map.put("checkcode", checkcode);
+        //rabbitTemplate.convertAndSend("sms", map);
+        //在控制台显示一份【方便测试】
+        System.out.println("验证码为："+checkcode);
     }
 }
