@@ -6,6 +6,7 @@ import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("/label")
 @CrossOrigin
-//@RefreshScope
+@RefreshScope
 public class LabelController {
     @Autowired
     private LabelService labelService;
