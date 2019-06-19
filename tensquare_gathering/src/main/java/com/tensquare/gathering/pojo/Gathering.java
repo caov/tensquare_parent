@@ -14,7 +14,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="tb_gathering")
-public class Gathering{
+public class Gathering implements Serializable{
 
     @Id
     private String id;//编号

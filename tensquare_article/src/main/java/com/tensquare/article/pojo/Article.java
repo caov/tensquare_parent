@@ -3,6 +3,7 @@ package com.tensquare.article.pojo;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * @program: tensquare_parent
@@ -12,7 +13,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tb_article")
-public class Article {
+public class Article implements Serializable {
     @Id
     private String id;//ID
     private String columnid;//专栏ID

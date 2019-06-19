@@ -13,6 +13,7 @@ spring:
     show‐sql: true
   redis:
     host: localhost
+    password: 123456
   data:
     mongodb:
       host: localhost

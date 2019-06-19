@@ -7,6 +7,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import util.IdWorker;
 
+import javax.transaction.Transactional;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -16,6 +17,7 @@ import java.util.concurrent.TimeUnit;
  * @create: 2019-06-14 14:49
  */
 @Service
+@Transactional
 public class ArticleService {
     @Autowired
     private ArticleDao articleDao;
