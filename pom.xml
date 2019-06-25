@@ -25,6 +25,7 @@
         <module>tensquare_web</module>
         <module>tensquare-config</module>
         <module>tensquare_config</module>
+        <module>rabbitmq_demo</module>
     </modules>
 
     <parent>
